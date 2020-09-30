@@ -11,9 +11,31 @@ public class Jeroo extends JerooBase {
      *                  it finds a flower on the ground
      **/
 
-    public void hurdles()
-    {
-
+    public void hurdles(){
+      while (!isFlower(HERE)) {
+        while (isClear(AHEAD)) {
+          if (isWater(RIGHT)) {
+            hop();
+          }
+          if (isNet(RIGHT)) {
+            hop();
+          } else {
+            if(isClear(RIGHT)) {
+              turn(RIGHT);
+              hop();
+            }
+          }
+        }
+        if (isNet(AHEAD)) {
+          turn(LEFT);
+        }
+        if (isWater(AHEAD)) {
+          turn(LEFT);
+        } 
+        if (isFlower(AHEAD)) {
+          hop();
+        }
+      }
     }
 
     // Do NOT touch the code below here
